@@ -1,0 +1,10 @@
+<div class="promo-page__container">
+    <h1>Ваш план питания для любого путешествия</h1>
+    <p class="lead">Учёт калорий, жиров, белков и углеводов</p>
+    <p class="lead">
+        <button type="button" class="btn btn-lg btn-success" ng-click="$ctrl.begin()" ng-disabled="$ctrl.progress">
+            <i class="fa fa-lg fa-spinner fa-spin" ng-if="$ctrl.progress"></i> Попробовать
+        </button>
+        <a routerLink="/login" class="btn btn-lg btn-primary" ng-disabled="$ctrl.progress">Войти</a>
+    </p>
+</div>
