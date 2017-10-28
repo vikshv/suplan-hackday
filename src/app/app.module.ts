@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AuthService } from './auth.service';
+import { PlanService } from './plan.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent }   from './navbar.component';
@@ -28,6 +29,8 @@ import { LoginPageComponent } from './login-page.component';
 
 import { DayTableComponent } from './day-table.component';
 import { RepastTableComponent } from './repast-table.component';
+import { RecipeTableComponent } from './recipe-table.component';
+import { ProductTableComponent } from './product-table.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +42,9 @@ import { RepastTableComponent } from './repast-table.component';
         PlanPageComponent,
         LoginPageComponent,
         DayTableComponent,
-        RepastTableComponent
+        RepastTableComponent,
+        RecipeTableComponent,
+        ProductTableComponent
     ],
     imports: [
         BrowserModule,
@@ -55,7 +60,10 @@ import { RepastTableComponent } from './repast-table.component';
         AngularFireDatabaseModule,
         MatInputModule
     ],
-    providers: [ AuthService ],
+    providers: [
+        AuthService,
+        PlanService
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PlanService } from './plan.service';
 
 @Component({
     selector: 'repast-table',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
     templateUrl: 'repast-table.component.html',
 })
 export class RepastTableComponent {
-    displayedColumns = ['number', 'date', 'weight', 'calories'];
+    dayIndex: number = 0;
+    repasts: Array<any>;
+
+    constructor(plan: PlanService) {
+        this.repasts = plan.days[this.dayIndex].repasts;
+    }
     
     ngOnInit() {
     }
