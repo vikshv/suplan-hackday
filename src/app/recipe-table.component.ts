@@ -12,11 +12,19 @@ export class RecipeTableComponent {
     recipes: Array<any>;
     products: Array<any>;
 
-    constructor(plan: PlanService) {
-        this.recipes = plan.days[this.dayIndex].repasts[this.repastIndex].recipes;
-        this.products = plan.days[this.dayIndex].repasts[this.repastIndex].products;
+    constructor(public plan: PlanService) {
+        this.recipes = this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes;
+        this.products = this.plan.days[this.dayIndex].repasts[this.repastIndex].products;
     }
     
     ngOnInit() {
+    }
+
+    addRecipe() {
+        this.recipes = this.plan.addRecipe(this.dayIndex, this.repastIndex);
+    }
+
+    addProduct() {
+        this.products = this.plan.addProductToRepast(this.dayIndex, this.repastIndex);
     }
 }

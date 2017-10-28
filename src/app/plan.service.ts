@@ -69,6 +69,78 @@ export class PlanService {
         return newRepasts;
     }
 
+    addRecipe(dayIndex, repastIndex) {
+        let newRecipes;
+        
+        this.days = this.days.map(day => {
+            let result;
+            if (day.index === dayIndex) {
+                const newRepasts = day.repasts.map(repast => {
+                    let result;
+                    if (repast.index === repastIndex) {
+                        newRecipes = repast.recipes ? repast.recipes.slice() : [];
+                        newRecipes.push({
+                            index: newRecipes.length,
+                            name: 'Новое блюдо'
+                        });
+                        result = {
+                            ...repast,
+                            recipes: newRecipes
+                        };
+                    } else {
+                        result = repast;
+                    }
+                    return result;
+                });
+                result = {
+                    ...day,
+                    repasts: newRepasts
+                };
+            } else {
+                result = day;
+            }
+            return result;
+        });
+
+        return newRecipes;
+    }
+
+    addProductToRepast(dayIndex, repastIndex) {
+        let newProducts;
+        
+        this.days = this.days.map(day => {
+            let result;
+            if (day.index === dayIndex) {
+                const newRepasts = day.repasts.map(repast => {
+                    let result;
+                    if (repast.index === repastIndex) {
+                        newProducts = repast.products ? repast.products.slice() : [];
+                        newProducts.push({
+                            index: newProducts.length,
+                            name: 'Новый продукт'
+                        });
+                        result = {
+                            ...repast,
+                            products: newProducts
+                        };
+                    } else {
+                        result = repast;
+                    }
+                    return result;
+                });
+                result = {
+                    ...day,
+                    repasts: newRepasts
+                };
+            } else {
+                result = day;
+            }
+            return result;
+        });
+
+        return newProducts;
+    }
+
     _resolveRepastName(type) {
         let result;
         if (type === 0) {
