@@ -10,10 +10,18 @@ export class RepastTableComponent {
     dayIndex: number = 0;
     repasts: Array<any>;
 
-    constructor(plan: PlanService) {
-        this.repasts = plan.days[this.dayIndex].repasts;
+    constructor(public plan: PlanService) {
+        this.repasts = this.plan.days[this.dayIndex].repasts;
     }
     
     ngOnInit() {
+    }
+
+    addRepast(type) {
+        this.repasts = this.plan.addRepast(this.dayIndex, type);
+    }
+
+    removeRepast(index) {
+        this.repasts = this.plan.removeRepast(this.dayIndex, index);
     }
 }

@@ -1,18 +1,40 @@
-<table class="table table-hover suplan-table">
-    <thead>
-        <tr>
+<h3>Plan page</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <a class="btn btn-success" (click)="addDay()">Добавить день</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover suplan-table">
+        <thead>
+          <tr>
             <th>№</th>
             <th>Дата</th>
             <th>Вес</th>
             <th>Калорийность</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of days" routerLink="/plan/{{row.index}}">
-            <td>{{row.index + 1}}</td>
-            <td>{{row.date | date:'dd.MM'}}</td>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of days">
+            <td>
+                <a routerLink="/plan/{{row.index}}">{{row.index + 1}}</a>
+            </td>
+            <td>{{row.date | date:'dd MMMM'}}</td>
             <td>{{row.weight}}</td>
             <td>{{row.calories}}</td>
-        </tr>
-    </tbody>
-</table>
+            <td>
+                <i class="fa fa-trash" aria-hidden="true" (click)="removeDay(row.index)"></i>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

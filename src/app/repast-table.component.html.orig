@@ -16,7 +16,25 @@
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-hover suplan-table">
+<<<<<<< Updated upstream
+          <table class="table table-hover suplan-table">
+              <thead>
+                  <tr>
+                      <th>Название</th>
+                      <th>Вес</th>
+                      <th>Калорийность</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let row of repasts" routerLink="/plan/{{dayIndex}}/{{row.index}}">
+                      <td>{{row.name}}</td>
+                      <td>{{row.weight}}</td>
+                      <td>{{row.calories}}</td>
+                  </tr>
+              </tbody>
+=======
+        <div class="mat-elevation-z8">
+          <table class="table table-hover ">
             <thead>
               <tr>
                 <th>Наименование</th>
@@ -38,6 +56,7 @@
                 </td>
               </tr>
             </tbody>
-        </table>
+>>>>>>> Stashed changes
+          </table>
     </div>
 </div>

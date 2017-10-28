@@ -9,10 +9,18 @@ import { PlanService } from './plan.service';
 export class DayTableComponent {
     days: Array<any>;
 
-    constructor(plan: PlanService) {
-        this.days = plan.days;
+    constructor(public plan: PlanService) {
     }
 
     ngOnInit() {
+        this.days = this.plan.days;
+    }
+
+    addDay() {
+        this.days = this.plan.addDay();
+    }
+
+    removeDay(index) {
+        this.days = this.plan.removeDay(index);
     }
 }
