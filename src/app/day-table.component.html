@@ -1,20 +1,18 @@
-<div class="mat-elevation-z8">
-  <table class="table table-hover ">
+<table class="table table-hover suplan-table">
     <thead>
-      <tr>
-        <th>№</th>
-        <th>Дата</th>
-        <th>Вес</th>
-        <th>Калорийность</th>
-      </tr>
+        <tr>
+            <th>№</th>
+            <th>Дата</th>
+            <th>Вес</th>
+            <th>Калорийность</th>
+        </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of days" routerLink="/plan/{{row.index}}">
-        <td>{{row.index + 1}}</td>
-        <td>{{row.date | date:'dd.MM'}}</td>
-        <td>{{row.weight}}</td>
-        <td>{{row.calories}}</td>
-      </tr>
+        <tr *ngFor="let row of days" routerLink="/plan/{{row.index}}">
+            <td>{{row.index + 1}}</td>
+            <td>{{row.date | date:'dd.MM'}}</td>
+            <td>{{row.weight}}</td>
+            <td>{{row.calories}}</td>
+        </tr>
     </tbody>
-  </table>
-</div>
+</table>
