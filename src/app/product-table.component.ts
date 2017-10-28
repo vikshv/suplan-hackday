@@ -13,10 +13,14 @@ export class ProductTableComponent {
 
     products: Array<any>;
 
-    constructor(plan: PlanService) {
-        this.products = plan.days[this.dayIndex].repasts[this.repastIndex].recipes[this.recipeIndex].products;
+    constructor(public plan: PlanService) {
+        this.products = this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes[this.recipeIndex].products;
     }
     
     ngOnInit() {
+    }
+
+    addProduct() {
+        this.products = this.plan.addProductToRecipe(this.dayIndex, this.repastIndex, this.recipeIndex);
     }
 }

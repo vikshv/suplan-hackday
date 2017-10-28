@@ -9,6 +9,7 @@ import { PlanPageComponent } from './plan-page.component';
 import { RepastTableComponent } from './repast-table.component';
 import { RecipeTableComponent } from './recipe-table.component';
 import { ProductTableComponent } from './product-table.component';
+import { ProductComponent } from './product.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/promo', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'login', component: LoginPageComponent },
     { path: 'plan/:day', component: RepastTableComponent },
     { path: 'plan/:day/:repast', component: RecipeTableComponent },
-    { path: 'plan/:day/:repast/:recipe', component: ProductTableComponent }
+    { path: 'plan/:day/:repast/:recipe', component: ProductTableComponent },
+    { path: 'plan/:day/:repast/:recipe/:product', component: ProductComponent }
 ];
 
 @NgModule({

@@ -31,6 +31,7 @@ import { DayTableComponent } from './day-table.component';
 import { RepastTableComponent } from './repast-table.component';
 import { RecipeTableComponent } from './recipe-table.component';
 import { ProductTableComponent } from './product-table.component';
+import { ProductComponent } from './product.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { ProductTableComponent } from './product-table.component';
         DayTableComponent,
         RepastTableComponent,
         RecipeTableComponent,
-        ProductTableComponent
+        ProductTableComponent,
+        ProductComponent
     ],
     imports: [
         BrowserModule,

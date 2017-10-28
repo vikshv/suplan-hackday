@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="well">
+            <form name="foodItem" class="form-horizontal" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <fieldset>
+                    <legend>
+                        Продукт
+                    </legend>
+
+                    <div class="form-group">
+                        <label for="inputShortName" class="col-md-3 control-label">Наименование</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="inputShortName" name="name" maxlength="40" required [(ngModel)]="product.name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputProtein" class="col-md-3 control-label">Белки</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <span class="input-group-addon">г</span>
+                                <input type="text" float-value class="form-control" id="inputProtein" name="protein" required [(ngModel)]="product.protein" placeholder="в 100 г">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('fat') }">
+                        <label for="inputFat" class="col-md-3 control-label">Жиры</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <span class="input-group-addon">г</span>
+                                <input type="text" float-value class="form-control" id="inputFat" name="fat" required [(ngModel)]="product.fat" placeholder="в 100 г">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('carbohydrate') }">
+                        <label for="inputСarbohydrate" class="col-md-3 control-label">Углеводы</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <span class="input-group-addon">г</span>
+                                <input type="text" float-value class="form-control" id="inputСarbohydrate" name="carbohydrate" required [(ngModel)]="product.carbohydrate"  placeholder="в 100 г">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputCalorie" class="col-md-3 control-label">Калорийность</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <span class="input-group-addon">ккал</span>
+                                <input type="text" float-value class="form-control" id="inputCalorie" name="energy" [(ngModel)]="product.energy" placeholder="на 100 г">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="$ctrl.item.energy = $ctrl.calcEnergy()">Вычислить</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <a ui-sref="food" class="btn btn-link">Отмена</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        
+        </div>
+    </div>
+</div>

@@ -115,10 +115,7 @@ export class PlanService {
                     let result;
                     if (repast.index === repastIndex) {
                         newProducts = repast.products ? repast.products.slice() : [];
-                        newProducts.push({
-                            index: newProducts.length,
-                            name: 'Новый продукт'
-                        });
+                        newProducts.push(this._createNewProduct(newProducts.length));
                         result = {
                             ...repast,
                             products: newProducts
@@ -139,6 +136,62 @@ export class PlanService {
         });
 
         return newProducts;
+    }
+
+    addProductToRecipe(dayIndex, repastIndex, recipeIndex) {
+        let newProducts;
+        
+        this.days = this.days.map(day => {
+            let result;
+            if (day.index === dayIndex) {
+                const repasts = day.repasts.map(repast => {
+                    let result;
+                    if (repast.index === repastIndex) {
+                        const recipes = repast.recipes.map(recipe => {
+                            let result;
+                            if (recipe.index === recipeIndex) {
+                                newProducts = recipe.products ? recipe.products.slice() : [];
+                                newProducts.push(this._createNewProduct(newProducts.length));
+                                result = {
+                                    ...recipe,
+                                    products: newProducts
+                                };
+                            } else {
+                                result = recipe;
+                            }
+                            return result;
+                        });
+                        result = {
+                            ...repast,
+                            recipes
+                        };
+                    } else {
+                        result = repast;
+                    }
+                    return result;
+                });
+                result = {
+                    ...day,
+                    repasts
+                };
+            } else {
+                result = day;
+            }
+            return result;
+        });
+
+        return newProducts;
+    }
+
+    _createNewProduct(index) {
+        return {
+            index,
+            name: 'Новый продукт',
+            protein: 0,
+            fat: 0,
+            carbohydrate: 0,
+            energy: 0
+        };
     }
 
     _resolveRepastName(type) {
