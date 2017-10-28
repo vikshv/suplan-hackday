@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
     selector: 'day-table',
@@ -9,50 +10,78 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'day-table.component.html',
 })
 export class DayTableComponent {
-    displayedColumns = ['number', 'calendarDate', 'weight', 'calories'];
+    items: Observable<any[]>;
+
+    displayedColumns = ['number', 'date', 'weight', 'calories'];
     exampleDatabase = new ExampleDatabase();
     dataSource: ExampleDataSource | null;
+
+    constructor(db: AngularFireDatabase) {
+        this.items = db.list('items').valueChanges();
+    }
 
     ngOnInit() {
         this.dataSource = new ExampleDataSource(this.exampleDatabase);
     }
 }
 
-export interface UserData {
-    id: number;
+interface ProductData {
+    name: string;
+}
+
+interface RecipeData {
+    products: Array<any>;
+}
+
+interface RepastData {
+    recipes: Array<any>;
+    products: Array<any>;
+}
+
+interface DayData {
+    index: number;
+    date: number;
     weight: string;
-    calendarDate: number;
     calories: string;
+
+    repasts: Array<any>;
+    recipes: Array<any>;
+    products: Array<any>;
 }
 
 export class ExampleDatabase {
-    dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-    get data(): UserData[] { return this.dataChange.value; }
+    dataChange: BehaviorSubject<DayData[]> = new BehaviorSubject<DayData[]>([]);
+    get data(): DayData[] { return this.dataChange.value; }
 
     constructor() {
         for (let i = 0; i < 5; i++) {
-            this.addUser();
+            this.addDay();
         }
     }
 
-    addUser() {
+    addDay() {
         const copiedData = this.data.slice();
-        copiedData.push(this.createNewUser());
+        copiedData.push(this.createDayData());
         this.dataChange.next(copiedData);
     }
 
-    private createNewUser() {
-        const id = (this.data.length + 1);
+    private createDayData() {
+        const index = (this.data.length + 1);
         const date = new Date();
-        date.setDate(date.getDate() + id);
-        const calendarDate = date.getTime();
+        date.setDate(date.getDate() + index);
+
         const weight = `100 гр.`;
         const calories = `200 кКалл.`;
+
         return {
-            id,
+            index,
             weight,
-            calendarDate,
-            calories
+            date: date.getTime(),
+            calories,
+
+            repasts: [],
+            recipes: [],
+            products: []
         };
     }
 }
@@ -62,7 +91,7 @@ export class ExampleDataSource extends DataSource<any> {
         super();
     }
 
-    connect(): Observable<UserData[]> {
+    connect(): Observable<DayData[]> {
         return this._exampleDatabase.dataChange;
     }
 

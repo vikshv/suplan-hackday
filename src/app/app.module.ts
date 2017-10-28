@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
@@ -26,6 +27,7 @@ import { PlanPageComponent } from './plan-page.component';
 import { LoginPageComponent } from './login-page.component';
 
 import { DayTableComponent } from './day-table.component';
+import { RepastTableComponent } from './repast-table.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +38,8 @@ import { DayTableComponent } from './day-table.component';
         HomePageComponent,
         PlanPageComponent,
         LoginPageComponent,
-        DayTableComponent
+        DayTableComponent,
+        RepastTableComponent
     ],
     imports: [
         BrowserModule,
@@ -49,6 +52,7 @@ import { DayTableComponent } from './day-table.component';
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
+        AngularFireDatabaseModule,
         MatInputModule
     ],
     providers: [ AuthService ],
