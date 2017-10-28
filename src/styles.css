@@ -15,13 +15,18 @@ body {
     margin-top: 10px;
 }
 
-.logo-top {
+.logo {
     color: #ffffff;
     float: left;
     line-height: 63px;
     margin-right: 20px;
 }
 
-.logo-bottom {
-    line-height: 74px;
+.suplan-footer {
+    background-color: #3e3f3a;
+    color: #98978b;
+}
+
+.footer-links {
+    line-height: 86px;
 }
