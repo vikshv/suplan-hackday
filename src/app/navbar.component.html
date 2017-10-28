@@ -11,24 +11,24 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a routerLink="/home">Главная</a></li>
-                <li><a routerLink="/plan">План</a></li>
-                <li><a routerLink="/foods">Продукты</a></li>
-                <li><a routerLink="/about">О проекте</a></li>
+                <li routerLinkActive="active"><a routerLink="/home">Главная</a></li>
+                <li routerLinkActive="active"><a routerLink="/plan">План</a></li>
+                <li routerLinkActive="active"><a routerLink="/foods">Продукты</a></li>
+                <li routerLinkActive="active"><a routerLink="/about">О проекте</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="afAuth.authState | async; else showLogin">
+                <li *ngIf="auth.authState | async; else showLogin">
                     <a href="#" (click)="logout()">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Выход
                     </a>
                 </li>
                 <ng-template #showLogin>
-                    <li>
+                    <li routerLinkActive="active">
                         <a routerLink="/login">
                             <i class="fa fa-sign-in" aria-hidden="true"></i> Вход
                         </a>
                     </li>
-                    <li>
+                    <li routerLinkActive="active">
                         <a routerLink="/register">
                             Регистрация
                         </a>

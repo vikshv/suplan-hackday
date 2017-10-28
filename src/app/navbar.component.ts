@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from './auth.service';
 
 @Component({
     selector: 'navbar',
@@ -7,13 +7,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
     styleUrls: [ './navbar.component.css' ]
 })
 export class NavbarComponent implements OnInit {
-    constructor(public afAuth: AngularFireAuth) {
+    constructor(public auth: AuthService) {
     }
 
     ngOnInit(): void {
     }
 
     logout() {
-        this.afAuth.auth.signOut();
+        this.auth.logout();
     }
 }

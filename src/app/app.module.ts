@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -12,11 +14,11 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthService } from './auth.service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent }   from './navbar.component';
 import { FooterComponent } from './footer.component';
-
-import { AuthService } from './auth.service';
 
 import { PromoPageComponent } from './promo-page.component';
 import { HomePageComponent } from './home-page.component';
@@ -42,11 +44,14 @@ import { DayTableComponent } from './day-table.component';
         AppRoutingModule,
         MatTableModule,
         MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         MatInputModule
     ],
-    providers: [],
+    providers: [ AuthService ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

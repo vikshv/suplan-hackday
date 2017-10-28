@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from './auth.service';
 
 @Component({
     selector: 'promo-page',
@@ -9,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class PromoPageComponent implements OnInit {
     progress: boolean = false;
 
-    constructor(public afAuth: AngularFireAuth) {
+    constructor(public auth: AuthService) {
     }
 
     ngOnInit(): void {
@@ -17,21 +17,8 @@ export class PromoPageComponent implements OnInit {
 
     begin() {
         this.progress = true;
-        this._signInAnonymously().then(() => {
+        this.auth.signInAnonymously().then(() => {
             this.progress = false;
-        });
-    }
-
-    _signInAnonymously() {
-        return this.afAuth.auth.signInAnonymously().catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-
-            if (errorCode === 'auth/operation-not-allowed') {
-                alert('You must enable Anonymous auth in the Firebase Console.');
-            } else {
-                console.error(error);
-            }
         });
     }
 }
