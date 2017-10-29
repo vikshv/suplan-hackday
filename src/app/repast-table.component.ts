@@ -11,6 +11,8 @@ export class RepastTableComponent {
     repasts: Array<any>;
 
     constructor(public plan: PlanService) {
+        const [ , , dayIndex ] = location.pathname.split('/');
+        this.dayIndex = parseInt(dayIndex, 10);
         this.repasts = this.plan.days[this.dayIndex].repasts;
     }
     
@@ -23,5 +25,13 @@ export class RepastTableComponent {
 
     removeRepast(index) {
         this.repasts = this.plan.removeRepast(this.dayIndex, index);
+    }
+
+    getWeight(repast) {
+        return repast.recipes.reduce((result, recipe) => {
+            return recipe.products.reduce((result, product) => {
+                return result + product.weight;
+            }, result);
+        }, 0);
     }
 }

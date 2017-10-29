@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('fat') }">
+                    <div class="form-group">
                         <label for="inputFat" class="col-md-3 control-label">Жиры</label>
                         <div class="col-md-7">
                             <div class="input-group">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-error' : $ctrl.isHasError('carbohydrate') }">
+                    <div class="form-group">
                         <label for="inputСarbohydrate" class="col-md-3 control-label">Углеводы</label>
                         <div class="col-md-7">
                             <div class="input-group">
@@ -45,13 +45,23 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="inputWeight" class="col-md-3 control-label">Вес</label>
+                        <div class="col-md-7">
+                            <div class="input-group">
+                                <span class="input-group-addon">г</span>
+                                <input type="text" float-value class="form-control" id="inputWeight" name="weight" required [(ngModel)]="product.weight" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="inputCalorie" class="col-md-3 control-label">Калорийность</label>
                         <div class="col-md-7">
                             <div class="input-group">
                                 <span class="input-group-addon">ккал</span>
-                                <input type="text" float-value class="form-control" id="inputCalorie" name="energy" [(ngModel)]="product.energy" placeholder="на 100 г">
+                                <input type="text" float-value class="form-control" id="inputCalorie" name="calories" [(ngModel)]="product.calories" placeholder="на 100 г">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="$ctrl.item.energy = $ctrl.calcEnergy()">Вычислить</button>
+                                    <button class="btn btn-default" type="button" (click)="calcEnergy()">Вычислить</button>
                                 </span>
                             </div>
                         </div>
@@ -60,7 +70,7 @@
                     <div class="form-group">
                         <div class="col-md-9 col-md-offset-3">
                             <button type="submit" class="btn btn-primary">Сохранить</button>
-                            <a ui-sref="food" class="btn btn-link">Отмена</a>
+                            <a (click)="onCancel()" class="btn btn-link">Отмена</a>
                         </div>
                     </div>
                 </fieldset>

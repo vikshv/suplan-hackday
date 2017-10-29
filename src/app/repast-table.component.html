@@ -1,4 +1,4 @@
-<h3>Расписание</h3>
+<h3>Меню на день</h3>
 
 <div class="row">
     <div class="col-md-12">
@@ -32,7 +32,7 @@
                         {{row.name}}
                     </a>
                 </td>
-                <td>{{row.weight}}</td>
+                <td>{{getWeight(row)}}</td>
                 <td>{{row.calories}}</td>
                 <td>
                     <i class="fa fa-trash" aria-hidden="true" (click)="removeRepast(row.index)"></i>

@@ -2,27 +2,58 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PlanService {
+    plan: any;
     days: Array<any>;
 
     constructor() {
-        const plan = this._createDefaultPlan(5);
-        this.days = plan.days;
+        const storedPlan = localStorage.getItem('plan');
+
+        if (storedPlan) {
+            this.plan = JSON.parse(storedPlan);
+        } else {
+            this.plan = this._createDefaultPlan(5);
+            this._storePlan(this.plan);
+        }
+
+        this.days = this.plan.days;
+    }
+
+    storePlan() {
+        this._storePlan(this.plan);
+    }
+
+    _storePlan(plan) {
+        localStorage.setItem('plan', JSON.stringify(plan));
     }
 
     addDay() {
         const day = this._createDay(this.days.length);
         const days = this.days.slice();
+
         days.push(day);
+
+        this._storePlan({
+            ...this.plan,
+            days
+        });
+
         return this.days = days;
     }
 
     removeDay(index) {
-        return this.days = this.days
+        this.days = this.days
             .filter(day => day.index !== index)
             .map((day, index) => ({
                 ...day,
                 index
             }));
+
+        this._storePlan({
+            ...this.plan,
+            days: this.days
+        });
+
+        return this.days;
     }
 
     addRepast(dayIndex, type) {
@@ -46,6 +77,11 @@ export class PlanService {
             return result;
         });
 
+        this._storePlan({
+            ...this.plan,
+            days: this.days
+        });
+
         return newRepasts;
     }
 
@@ -64,6 +100,11 @@ export class PlanService {
                 result = day;
             }
             return result;
+        });
+
+        this._storePlan({
+            ...this.plan,
+            days: this.days
         });
 
         return newRepasts;
@@ -102,6 +143,11 @@ export class PlanService {
             return result;
         });
 
+        this._storePlan({
+            ...this.plan,
+            days: this.days
+        });
+
         return newRecipes;
     }
 
@@ -133,6 +179,11 @@ export class PlanService {
                 result = day;
             }
             return result;
+        });
+
+        this._storePlan({
+            ...this.plan,
+            days: this.days
         });
 
         return newProducts;
@@ -178,6 +229,11 @@ export class PlanService {
                 result = day;
             }
             return result;
+        });
+
+        this._storePlan({
+            ...this.plan,
+            days: this.days
         });
 
         return newProducts;
