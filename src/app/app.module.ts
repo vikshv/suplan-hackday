@@ -25,6 +25,7 @@ import { FooterComponent } from './footer.component';
 import { PromoPageComponent } from './promo-page.component';
 import { HomePageComponent } from './home-page.component';
 import { PlanPageComponent } from './plan-page.component';
+import { AboutPageComponent } from './about-page.component';
 import { LoginPageComponent } from './login-page.component';
 import { StatisticTabComponent } from './statistic-tab.component';
 
@@ -46,6 +47,7 @@ import { PlanSettingsComponent } from './plan-settings.component';
         HomePageComponent,
         PlanPageComponent,
         LoginPageComponent,
+        AboutPageComponent,
         DayTableComponent,
         RepastTableComponent,
         RecipeTableComponent,
