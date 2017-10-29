@@ -39,7 +39,7 @@ export class RepastTableComponent {
             return recipe.products ? recipe.products.reduce((result, product) => {
                 return result + parseFloat(product.weight || 0);
             }, result) : 0;
-        }, 0) : '0';
+        }, 0) : 0;
         return result.toFixed(2);
     }
 
@@ -48,7 +48,7 @@ export class RepastTableComponent {
             return recipe.products ? recipe.products.reduce((result, product) => {
                 return result + parseFloat(product.calories || 0);
             }, result) : 0;
-        }, 0) : '0';
+        }, 0) : 0;
         return result.toFixed(2);
     }
 

@@ -1,1 +1,22 @@
-<div>hrbrtbrtiu</div>
+<div class="row">
+    <div class="col-md-12">
+          <table class="table table-hover suplan-table">
+              <thead>
+                  <tr>
+                      <th>Наименование</th>
+                      <th>Вес, г</th>
+                      <th>Калорийность, ккал</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let row of products">
+                      <td>
+                          {{row.name}}
+                      </td>
+                      <td>{{row.weight}}</td>
+                      <td>{{row.calories}}</td>
+                  </tr>
+              </tbody>
+          </table>
+    </div>
+</div>
