@@ -1,10 +1,10 @@
 <h3>План питания</h3>
 
 <ul class="nav nav-tabs">
-    <li [ngClass]="{ active: isSelected(0) }">
+    <li class="plan-page__tab" [ngClass]="{ active: isSelected(0) }">
         <a (click)="onClickTab(0)">Дни</a>
     </li>
-    <li [ngClass]="{ active: isSelected(1) }">
+    <li class="plan-page__tab" [ngClass]="{ active: isSelected(1) }">
         <a (click)="onClickTab(1)">Список продуктов</a>
     </li>
 </ul>
