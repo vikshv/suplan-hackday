@@ -32,6 +32,7 @@ import { RepastTableComponent } from './repast-table.component';
 import { RecipeTableComponent } from './recipe-table.component';
 import { ProductTableComponent } from './product-table.component';
 import { ProductComponent } from './product.component';
+import { ProductListComponent } from './product-list.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { ProductComponent } from './product.component';
         RepastTableComponent,
         RecipeTableComponent,
         ProductTableComponent,
-        ProductComponent
+        ProductComponent,
+        ProductListComponent
     ],
     imports: [
         BrowserModule,

@@ -1,22 +1,19 @@
 <h3>План питания</h3>
 
 <ul class="nav nav-tabs">
-    <li class="active">
-        <a href="#home" data-toggle="tab">Дни</a>
+    <li [ngClass]="{ active: isSelected(0) }">
+        <a (click)="onClickTab(0)">Дни</a>
     </li>
-    <li>
-        <a href="#profile" data-toggle="tab">Список продуктов</a>
+    <li [ngClass]="{ active: isSelected(1) }">
+        <a (click)="onClickTab(1)">Список продуктов</a>
     </li>
 </ul>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="home">
-        <div class="suplan-nav-tabs">
-            <day-table></day-table>
-        </div>
+
+<div id="myTabContent" class="tab-content" [ngSwitch]="tab">
+    <div class="suplan-nav-tabs" *ngSwitchCase="0">
+        <day-table></day-table>
     </div>
-    <div class="tab-pane fade" id="profile">
-        <div class="suplan-nav-tabs">
-            <p></p>
-        </div>
+    <div class="suplan-nav-tabs" *ngSwitchCase="1">
+        <product-list></product-list>
     </div>
 </div>

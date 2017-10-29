@@ -7,17 +7,20 @@ import { PlanService } from './plan.service';
     styleUrls: [ './plan-page.component.css' ]
 })
 export class PlanPageComponent implements OnInit {
+    tab: number;
+
     constructor(public plan: PlanService) {
+        this.tab = 0;
     }
 
     ngOnInit(): void {
     }
 
-    addDay() {
-        this.plan.addDay();
+    onClickTab(index) {
+        this.tab = index;
     }
 
-    removeDay() {
-        
+    isSelected(index) {
+        return index === this.tab;
     }
 }
