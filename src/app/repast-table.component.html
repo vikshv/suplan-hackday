@@ -1,6 +1,16 @@
 <h3>Меню на день</h3>
 
 <div class="row">
+    <div class="col-md-6">
+        <ul class="breadcrumb">
+          <li *ngFor="let item of breadcrumb">
+              <a href="#">{{item}}</a>
+          </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <div class="btn-toolbar">
             <div class="btn-group">
@@ -20,8 +30,8 @@
             <thead>
               <tr>
                 <th>Наименование</th>
-                <th>Вес</th>
-                <th>Калорийность</th>
+                <th>Вес, г</th>
+                <th>Калорийность, ккал</th>
                 <th></th>
               </tr>
             </thead>
@@ -33,10 +43,18 @@
                     </a>
                 </td>
                 <td>{{getWeight(row)}}</td>
-                <td>{{row.calories}}</td>
+                <td>{{getCalories(row)}}</td>
                 <td>
                     <i class="fa fa-trash" aria-hidden="true" (click)="removeRepast(row.index)"></i>
                 </td>
+              </tr>
+              <tr>
+                  <td>
+                      <b>Сумма:</b>
+                  </td>
+                  <td><b>{{sumWeight()}}</b></td>
+                  <td><b>{{sumCalories()}}</b></td>
+                  <td></td>
               </tr>
             </tbody>
         </table>

@@ -15,8 +15,8 @@
           <tr>
             <th>№</th>
             <th>Дата</th>
-            <th>Вес</th>
-            <th>Калорийность</th>
+            <th>Вес, г</th>
+            <th>Калорийность, ккал</th>
             <th></th>
           </tr>
         </thead>
@@ -28,8 +28,8 @@
             <td>
                 <a routerLink="/plan/{{row.index}}">{{row.date | date:'dd MMMM'}}</a>
             </td>
-            <td>{{row.weight}}</td>
-            <td>{{row.calories}}</td>
+            <td>{{getWeight(row)}}</td>
+            <td>{{getCalories(row)}}</td>
             <td>
                 <i class="fa fa-trash" aria-hidden="true" (click)="removeDay(row.index)"></i>
             </td>

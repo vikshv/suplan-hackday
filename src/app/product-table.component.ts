@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlanService } from './plan.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'product-table',
@@ -16,7 +17,7 @@ export class ProductTableComponent {
 
     recipeName: string;
 
-    constructor(public plan: PlanService) {
+    constructor(public plan: PlanService, public location: Location) {
         const [ , , dayIndex, repastIndex, recipeIndex ] = window.location.pathname.split('/');
 
         this.dayIndex = this.parseInt(dayIndex);
@@ -46,18 +47,25 @@ export class ProductTableComponent {
     }
 
     sumWeight() {
-        return this.products ? this.products.reduce((result, product) => {
+        const result = this.products ? this.products.reduce((result, product) => {
             return result + this.parseInt(product.weight);
         }, 0) : 0;
+        return result.toFixed(2);
     }
 
     sumCalories() {
-        return this.products ? this.products.reduce((result, product) => {
+        const result = this.products ? this.products.reduce((result, product) => {
             return result + parseFloat(product.calories || 0);
         }, 0) : 0;
+        return result.toFixed(2);
     }
 
     removeProduct(index) {
         this.products = this.plan.removeProductFromRecipe(this.dayIndex, this.repastIndex, this.recipeIndex, index);
+    }
+
+    changeRecipeName() {
+        this.plan.changeRecipeName(this.dayIndex, this.repastIndex, this.recipeIndex, this.recipeName);
+        this.location.back();
     }
 }

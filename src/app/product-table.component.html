@@ -14,9 +14,9 @@
     <div class="col-md-6">
         <div class="form-group">
           <div class="input-group">
-            <input type="text" class="form-control" [value]="recipeName">
+            <input type="text" class="form-control" [(ngModel)]="recipeName">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Сохранить</button>
+              <button class="btn btn-default" type="button" (click)="changeRecipeName()">Сохранить</button>
             </span>
           </div>
         </div>

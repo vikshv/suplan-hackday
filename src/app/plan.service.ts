@@ -241,6 +241,51 @@ export class PlanService {
         return newProducts;
     }
 
+    changeRecipeName(dayIndex, repastIndex, recipeIndex, recipeName) {
+        this.days = this.days.map(day => {
+            let result;
+            if (day.index === dayIndex) {
+                const repasts = day.repasts.map(repast => {
+                    let result;
+                    if (repast.index === repastIndex) {
+                        const recipes = repast.recipes.map(recipe => {
+                            let result;
+                            if (recipe.index === recipeIndex) {
+                                result = {
+                                    ...recipe,
+                                    name: recipeName
+                                };
+                            } else {
+                                result = recipe;
+                            }
+                            return result;
+                        });
+                        result = {
+                            ...repast,
+                            recipes
+                        };
+                    } else {
+                        result = repast;
+                    }
+                    return result;
+                });
+                result = {
+                    ...day,
+                    repasts
+                };
+            } else {
+                result = day;
+            }
+            return result;
+        });
+
+        this._storePlan({
+            ...this.plan,
+            days: this.days
+        });
+    }
+
+
     removeProductFromRecipe(dayIndex, repastIndex, recipeIndex, productIndex) {
         let newProducts;
         
