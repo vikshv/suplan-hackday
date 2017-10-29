@@ -46,14 +46,18 @@ export class ProductTableComponent {
     }
 
     sumWeight() {
-        return this.products.reduce((result, product) => {
+        return this.products ? this.products.reduce((result, product) => {
             return result + this.parseInt(product.weight);
-        }, 0);
+        }, 0) : 0;
     }
 
     sumCalories() {
-        return this.products.reduce((result, product) => {
+        return this.products ? this.products.reduce((result, product) => {
             return result + parseFloat(product.calories || 0);
-        }, 0);
+        }, 0) : 0;
+    }
+
+    removeProduct(index) {
+        this.products = this.plan.removeProductFromRecipe(this.dayIndex, this.repastIndex, this.recipeIndex, index);
     }
 }

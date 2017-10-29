@@ -41,6 +41,7 @@
                       <th>Наименование</th>
                       <th>Вес, г</th>
                       <th>Калорийность, ккал</th>
+                      <th></th>
                   </tr>
               </thead>
               <tbody>
@@ -52,6 +53,9 @@
                       </td>
                       <td>{{row.weight}}</td>
                       <td>{{row.calories}}</td>
+                      <td>
+                        <i class="fa fa-trash" aria-hidden="true" (click)="removeProduct(row.index)"></i>
+                    </td>
                   </tr>
                   <tr>
                       <td>
@@ -59,6 +63,7 @@
                       </td>
                       <td><b>{{sumWeight()}}</b></td>
                       <td><b>{{sumCalories()}}</b></td>
+                      <td></td>
                   </tr>
               </tbody>
           </table>

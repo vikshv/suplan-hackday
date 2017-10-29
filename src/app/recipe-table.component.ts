@@ -9,12 +9,22 @@ import { PlanService } from './plan.service';
 export class RecipeTableComponent {
     dayIndex: number = 0;
     repastIndex: number = 0;
+
     recipes: Array<any>;
     products: Array<any>;
 
     constructor(public plan: PlanService) {
+        const [ , , dayIndex, repastIndex ] = window.location.pathname.split('/');
+
+        this.dayIndex = this.parseInt(dayIndex);
+        this.repastIndex = this.parseInt(repastIndex);
+
         this.recipes = this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes;
         this.products = this.plan.days[this.dayIndex].repasts[this.repastIndex].products;
+    }
+
+    parseInt(val) {
+        return parseInt(val, 10);
     }
     
     ngOnInit() {
