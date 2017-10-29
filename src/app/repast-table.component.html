@@ -36,16 +36,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let row of repasts">
-                <td>
-                    <a routerLink="/plan/{{dayIndex}}/{{row.index}}">
-                        {{row.name}}
-                    </a>
-                </td>
+              <tr *ngFor="let row of repasts" routerLink="/plan/{{dayIndex}}/{{row.index}}">
+                <td>{{row.name}}</td>
                 <td>{{getWeight(row)}}</td>
                 <td>{{getCalories(row)}}</td>
                 <td>
-                    <i class="fa fa-trash" aria-hidden="true" (click)="removeRepast(row.index)"></i>
+                    <i class="fa fa-trash suplan-link" aria-hidden="true" (click)="removeRepast(row.index)"></i>
                 </td>
               </tr>
               <tr>

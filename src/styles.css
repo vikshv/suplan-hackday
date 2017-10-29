@@ -26,6 +26,10 @@ body {
     margin-top: 10px;
 }
 
+.suplan-link {
+    cursor: pointer;
+}
+
 .suplan-footer {
     background-color: #3e3f3a;
     color: #98978b;

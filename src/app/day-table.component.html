@@ -12,28 +12,24 @@
     <div class="col-md-12">
         <table class="table table-hover suplan-table">
         <thead>
-          <tr>
-            <th>№</th>
-            <th>Дата</th>
-            <th>Вес, г</th>
-            <th>Калорийность, ккал</th>
-            <th></th>
-          </tr>
+            <tr>
+                <th>№</th>
+                <th>Дата</th>
+                <th>Вес, г</th>
+                <th>Калорийность, ккал</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of days">
-            <td>
-                {{row.index + 1}}
-            </td>
-            <td>
-                <a routerLink="/plan/{{row.index}}">{{row.date | date:'dd MMMM'}}</a>
-            </td>
-            <td>{{getWeight(row)}}</td>
-            <td>{{getCalories(row)}}</td>
-            <td>
-                <i class="fa fa-trash" aria-hidden="true" (click)="removeDay(row.index)"></i>
-            </td>
-          </tr>
+            <tr *ngFor="let row of days" routerLink="/plan/{{row.index}}">
+                <td>{{row.index + 1}}</td>
+                <td>{{row.date | date:'dd MMMM'}}</td>
+                <td>{{getWeight(row)}}</td>
+                <td>{{getCalories(row)}}</td>
+                <td>
+                    <i class="fa fa-trash suplan-link" aria-hidden="true" (click)="removeDay(row.index)"></i>
+                </td>
+            </tr>
         </tbody>
         </table>
     </div>
