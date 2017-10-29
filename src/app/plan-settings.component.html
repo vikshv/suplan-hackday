@@ -1,72 +1,39 @@
 <div class="row">
-    <div class="col-md-6">
-      <form class="form-horizontal">
+    <div class="col-md-8">
+      <form class="form-horizontal" #f="ngForm">
         <fieldset>
           <div class="form-group">
-            <label for="inputPlanName" class="col-lg-2 control-label">Название</label>
-            <div class="col-lg-10">
-              <input type="text" class="form-control" id="inputPlanName" placeholder="Новый план">
+            <label for="inputPlanName" class="col-lg-4 control-label">Название</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="inputPlanName" placeholder="Новый план" name="planName" [(ngModel)]="planName">
             </div>
           </div>
+
           <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Checkbox
-                </label>
-              </div>
+            <label for="inputCount" class="col-lg-4 control-label">Кол-во участников</label>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" id="inputCount" placeholder="" name="countMembers" [(ngModel)]="countMembers">
             </div>
           </div>
+
           <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-            <div class="col-lg-10">
+            <label for="inputDays" class="col-lg-4 control-label">Продолжительность, дней</label>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" id="inputDays" placeholder=""name="countDays" [(ngModel)]="countDays" >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="textArea" class="col-lg-4 control-label">Описание</label>
+            <div class="col-lg-8">
               <textarea class="form-control" rows="3" id="textArea"></textarea>
-              <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+              <span class="help-block">Добавьте краткое описание назначения плана</span>
             </div>
           </div>
+
           <div class="form-group">
-            <label class="col-lg-2 control-label">Radios</label>
-            <div class="col-lg-10">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                  Option one is this
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Option two can be something else
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="select" class="col-lg-2 control-label">Selects</label>
-            <div class="col-lg-10">
-              <select class="form-control" id="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <br>
-              <select multiple="" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-              <button type="reset" class="btn btn-default">Cancel</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-lg-8 col-lg-offset-4">
+              <button class="btn btn-primary" (click)="save()">Применить</button>
             </div>
           </div>
         </fieldset>

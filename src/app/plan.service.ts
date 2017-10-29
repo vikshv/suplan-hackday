@@ -19,6 +19,15 @@ export class PlanService {
         this.days = this.plan.days;
     }
 
+    setup(options) {
+        this.plan = {
+            ...this.plan,
+            ...options
+        };
+        this.days = this.plan.days;
+        this.storePlan();
+    }
+
     storePlan() {
         this._storePlan(this.plan);
     }
@@ -364,7 +373,8 @@ export class PlanService {
 
     _createDefaultPlan(days) {
         return {
-            days: this._createDays(days)
+            days: this._createDays(days),
+            name: 'Новый план'
         };
     }
 
@@ -389,44 +399,4 @@ export class PlanService {
             repasts: []
         };
     }
-
-    // _createDefaultRepasts() {
-    //     return [
-    //         {
-    //             index: 0,
-    //             name: 'Завтрак',
-    //             recipes: [
-    //                 {
-    //                     index: 0,
-    //                     name: 'Каша',
-    //                     products: [
-    //                         {
-    //                             name: 'Молоко'
-    //                         },
-    //                         {
-    //                             name: 'Гречка'
-    //                         }
-    //                     ]
-    //                 }
-    //             ],
-    //             products: [
-    //                 {
-    //                     name: 'Шоколад'
-    //                 }
-    //             ]
-    //         },
-    //         {
-    //             index: 1,
-    //             name: 'Обед',
-    //             recipes: [],
-    //             products: []
-    //         },
-    //         {
-    //             index: 2,
-    //             name: 'Ужин',
-    //             recipes: [],
-    //             products: []
-    //         }
-    //     ];
-    // }
 }
