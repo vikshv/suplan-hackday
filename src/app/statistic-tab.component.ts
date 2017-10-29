@@ -19,7 +19,7 @@ export class StatisticTabComponent implements OnInit {
             const calories = this.reduceProp(day, 'calories');
             const weight = this.reduceProp(day, 'weight');
             return {
-                "category": `category ${index}`,
+                "category": `День ${index + 1}`,
                 "column-1": weight.toFixed(2),
                 "column-2": calories.toFixed(2)
             };
@@ -39,7 +39,7 @@ export class StatisticTabComponent implements OnInit {
                             "balloonText": "[[title]] of [[category]]:[[value]]",
                             "fillAlphas": 1,
                             "id": "AmGraph-1",
-                            "title": "graph 1",
+                            "title": "Вес",
                             "type": "column",
                             "valueField": "column-1",
                             "labelText": "[[value]]"
@@ -48,7 +48,7 @@ export class StatisticTabComponent implements OnInit {
                             "balloonText": "[[title]] of [[category]]:[[value]]",
                             "fillAlphas": 1,
                             "id": "AmGraph-2",
-                            "title": "graph 2",
+                            "title": "Калорийность",
                             "type": "column",
                             "valueField": "column-2",
                             "labelText": "[[value]]"
@@ -59,7 +59,7 @@ export class StatisticTabComponent implements OnInit {
                         {
                             "id": "ValueAxis-1",
                             "stackType": "regular",
-                            "title": "Axis title"
+                            "title": "ккал, г"
                         }
                     ],
                     "allLabels": [],
@@ -72,7 +72,7 @@ export class StatisticTabComponent implements OnInit {
                         {
                             "id": "Title-1",
                             "size": 15,
-                            "text": "Chart Title"
+                            "text": "Вес и калорийность по дням"
                         }
                     ],
                     "dataProvider": dataProvider
