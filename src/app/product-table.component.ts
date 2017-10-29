@@ -12,8 +12,9 @@ export class ProductTableComponent {
     recipeIndex: number = 0;
 
     products: Array<any>;
-
     breadcrumb: Array<any>;
+
+    recipeName: string;
 
     constructor(public plan: PlanService) {
         const [ , , dayIndex, repastIndex, recipeIndex ] = window.location.pathname.split('/');
@@ -27,9 +28,10 @@ export class ProductTableComponent {
         const date = new Date(this.plan.days[this.dayIndex].date);
         this.breadcrumb = [
             date.toLocaleDateString(),
-            this.plan.days[this.dayIndex].repasts[this.repastIndex].name,
-            this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes[this.recipeIndex].name
+            this.plan.days[this.dayIndex].repasts[this.repastIndex].name
         ];
+
+        this.recipeName = this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes[this.recipeIndex].name;
     }
 
     parseInt(val) {

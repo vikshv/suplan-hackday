@@ -28,10 +28,10 @@ export class RepastTableComponent {
     }
 
     getWeight(repast) {
-        return repast.recipes.reduce((result, recipe) => {
-            return recipe.products.reduce((result, product) => {
+        return repast.recipes ? repast.recipes.reduce((result, recipe) => {
+            return recipe.products ? recipe.products.reduce((result, product) => {
                 return result + product.weight;
-            }, result);
-        }, 0);
+            }, result) : 0;
+        }, 0) : 0;
     }
 }
