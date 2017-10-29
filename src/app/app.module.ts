@@ -19,13 +19,14 @@ import { AuthService } from './auth.service';
 import { PlanService } from './plan.service';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent }   from './navbar.component';
+import { NavbarComponent } from './navbar.component';
 import { FooterComponent } from './footer.component';
 
 import { PromoPageComponent } from './promo-page.component';
 import { HomePageComponent } from './home-page.component';
 import { PlanPageComponent } from './plan-page.component';
 import { LoginPageComponent } from './login-page.component';
+import { StatisticTabComponent } from './statistic-tab.component';
 
 import { DayTableComponent } from './day-table.component';
 import { RepastTableComponent } from './repast-table.component';
@@ -51,6 +52,7 @@ import { PlanSettingsComponent } from './plan-settings.component';
         ProductTableComponent,
         ProductComponent,
         ProductListComponent,
+        StatisticTabComponent,
         PlanSettingsComponent
     ],
     imports: [

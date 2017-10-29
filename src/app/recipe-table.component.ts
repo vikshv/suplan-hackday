@@ -36,7 +36,7 @@ export class RecipeTableComponent {
     parseInt(val) {
         return parseInt(val, 10);
     }
-    
+
     ngOnInit() {
     }
 

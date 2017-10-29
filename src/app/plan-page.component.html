@@ -10,6 +10,9 @@
     <li class="plan-page__tab" [ngClass]="{ active: isSelected(2) }">
         <a (click)="onClickTab(2)">Список продуктов</a>
     </li>
+    <li class="plan-page__tab" [ngClass]="{ active: isSelected(3) }">
+        <a (click)="onClickTab(3)">Статистика</a>
+    </li>
 </ul>
 
 <div id="myTabContent" class="tab-content" [ngSwitch]="tab">
@@ -21,5 +24,8 @@
     </div>
     <div class="suplan-nav-tabs" *ngSwitchCase="2">
         <product-list></product-list>
+    </div>
+    <div class="suplan-nav-tabs" *ngSwitchCase="3">
+        <statistic-tab></statistic-tab>
     </div>
 </div>
