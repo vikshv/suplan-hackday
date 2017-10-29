@@ -34,8 +34,12 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let row of recipes" routerLink="/plan/{{dayIndex}}/{{repastIndex}}/{{row.index}}" class="suplan-link">
-                      <td>{{row.name}}</td>
+                  <tr *ngFor="let row of recipes" class="suplan-link">
+                      <td>
+                        <a routerLink="/plan/{{dayIndex}}/{{repastIndex}}/{{row.index}}">
+                          {{row.name}}
+                        </a>
+                      </td>
                       <td>{{getWeight(row)}}</td>
                       <td>{{getCalories(row)}}</td>
                   </tr>

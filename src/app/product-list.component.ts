@@ -8,14 +8,17 @@ import { PlanService } from './plan.service';
 })
 export class ProductListComponent {
     products: Array<any>;
+    countMembers: number;
 
     constructor(public plan: PlanService) {
-        const days = this.plan.days;
+        const { days, countMembers } = this.plan.plan;
+        this.countMembers = parseInt(countMembers, 10);
         this.products = this.recuceProducts(days);
     }
 
     recuceProducts(days) {
         const result = {};
+
         days.forEach(day => {
             const { repasts = [] } = day;
             repasts.forEach(repast => {
@@ -26,8 +29,8 @@ export class ProductListComponent {
                         const item = result[product.name] || {};
                         const { weight = 0, calories = 0 } = item;
 
-                        const newWeight = Number(weight) + parseFloat(product.weight || 0);
-                        const newCalories = Number(calories) + parseFloat(product.calories || 0);
+                        const newWeight = Number(weight) + parseFloat(product.weight || 0) * this.countMembers;
+                        const newCalories = Number(calories) + parseFloat(product.calories || 0) * this.countMembers;
 
                         result[product.name] = {
                             ...product,
@@ -38,6 +41,7 @@ export class ProductListComponent {
                 });
             });
         });
+
         return Object.values(result);
     }
 }

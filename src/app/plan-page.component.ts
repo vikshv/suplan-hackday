@@ -10,7 +10,7 @@ export class PlanPageComponent implements OnInit {
     tab: number;
 
     constructor(public plan: PlanService) {
-        this.tab = 0;
+        this.tab = 1;
     }
 
     ngOnInit(): void {

@@ -21,9 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of days" routerLink="/plan/{{row.index}}" class="suplan-link">
+            <tr *ngFor="let row of days" class="suplan-link">
                 <td>{{row.index + 1}}</td>
-                <td>{{row.date | date:'dd MMMM'}}</td>
+                <td>
+                    <a routerLink="/plan/{{row.index}}">
+                        {{row.date | date:'dd MMMM'}}
+                    </a>
+                </td>
                 <td>{{getWeight(row)}}</td>
                 <td>{{getCalories(row)}}</td>
                 <td>
