@@ -63,20 +63,20 @@ export class RecipeTableComponent {
             return recipe.products ? recipe.products.reduce((result, product) => {
                 return result + parseFloat(product[propName] || 0);
             }, result) : result;
-        }, 0) : '0';
+        }, 0) : 0;
     }
 
     getWeight(recipe) {
         const result =   recipe.products ? recipe.products.reduce((result, product) => {
             return result + parseFloat(product.weight);
-        }, 0) : '0';
+        }, 0) : 0;
         return result.toFixed(2);
     }
 
     getCalories(recipe) {
         const result = recipe.products ? recipe.products.reduce((result, product) => {
             return result + parseFloat(product.calories || 0);
-        }, 0) : '0';
+        }, 0) : 0;
         return result.toFixed(2);
     }
 }
