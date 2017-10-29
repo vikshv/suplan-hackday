@@ -34,6 +34,8 @@ import { ProductTableComponent } from './product-table.component';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list.component';
 
+import { PlanSettingsComponent } from './plan-settings.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -48,7 +50,8 @@ import { ProductListComponent } from './product-list.component';
         RecipeTableComponent,
         ProductTableComponent,
         ProductComponent,
-        ProductListComponent
+        ProductListComponent,
+        PlanSettingsComponent
     ],
     imports: [
         BrowserModule,

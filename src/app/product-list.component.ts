@@ -23,8 +23,16 @@ export class ProductListComponent {
                 recipes.forEach(recipe => {
                     const { products = [] } = recipe;
                     products.forEach(product => {
+                        const item = result[product.name] || {};
+                        const { weight = 0, calories = 0 } = item;
+
+                        const newWeight = Number(weight) + parseFloat(product.weight || 0);
+                        const newCalories = Number(calories) + parseFloat(product.calories || 0);
+
                         result[product.name] = {
-                            ...product
+                            ...product,
+                            weight: newWeight.toFixed(2),
+                            calories: newCalories.toFixed(2)
                         };
                     });
                 });
