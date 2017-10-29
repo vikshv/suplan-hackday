@@ -15,11 +15,30 @@ export class ProductComponent {
     productIndex: number = 0;
 
     product: any;
+    breadcrumb: Array<any>;
 
     constructor(public plan: PlanService, public location: Location) {
+        const [ , , dayIndex, repastIndex, recipeIndex, productIndex ] = window.location.pathname.split('/');
+
+        this.dayIndex = this.parseInt(dayIndex);
+        this.repastIndex = this.parseInt(repastIndex);
+        this.recipeIndex = this.parseInt(recipeIndex);
+        this.productIndex = this.parseInt(productIndex);
+
         this.product = {
             ...this.getProductLink()
         };
+
+        const date = new Date(this.plan.days[this.dayIndex].date);
+        this.breadcrumb = [
+            date.toLocaleDateString(),
+            this.plan.days[this.dayIndex].repasts[this.repastIndex].name,
+            this.plan.days[this.dayIndex].repasts[this.repastIndex].recipes[this.recipeIndex].name
+        ];
+    }
+
+    parseInt(val) {
+        return parseInt(val, 10);
     }
 
     getProductLink() {

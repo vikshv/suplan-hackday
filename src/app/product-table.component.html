@@ -1,6 +1,16 @@
 <h3>Состав блюда</h3>
 
 <div class="row">
+    <div class="col-md-6">
+        <ul class="breadcrumb">
+          <li *ngFor="let item of breadcrumb">
+              <a href="#">{{item}}</a>
+          </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <div class="btn-toolbar">
             <div class="btn-group">
@@ -9,6 +19,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
           <table class="table table-hover suplan-table">
@@ -28,6 +39,13 @@
                       </td>
                       <td>{{row.weight}}</td>
                       <td>{{row.calories}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <b>Сумма:</b>
+                      </td>
+                      <td><b>{{sumWeight()}}</b></td>
+                      <td><b>{{sumCalories()}}</b></td>
                   </tr>
               </tbody>
           </table>

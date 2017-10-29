@@ -10,6 +10,7 @@ export class PlanService {
 
         if (storedPlan) {
             this.plan = JSON.parse(storedPlan);
+            console.log(this.plan)
         } else {
             this.plan = this._createDefaultPlan(5);
             this._storePlan(this.plan);
@@ -23,6 +24,7 @@ export class PlanService {
     }
 
     _storePlan(plan) {
+        this.plan = plan;
         localStorage.setItem('plan', JSON.stringify(plan));
     }
 
